@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    android:gravity="center">
+
+    <!-- Title of the Activity -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QR Code Details"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="16dp"/>
+
+    <!-- QR Code Result Label -->
+    <TextView
+        android:id="@+id/tv_result_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scanned Result:"
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp" />
+
+    <!-- Display the Scanned QR Code Result (Click to Open URL) -->
+    <TextView
+        android:id="@+id/qr_result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No result"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/tv_result_label"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:autoLink="web"/>
+
+    <!-- Button to go back to QR Scanner or Home -->
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Scanner"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_below="@id/qr_result_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="12dp"/>
+</RelativeLayout>

@@ -1,5 +1,7 @@
 [versions]
 agp = "8.5.0"
+codeScanner = "2.3.0"
+codeScannerVersion = "2.1.0"
 core = "3.4.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -11,6 +13,8 @@ constraintlayout = "2.1.4"
 zxingAndroidEmbeddedVersion = "4.3.0"
 
 [libraries]
+android-code-scanner = { module = "com.budiyev.android:code-scanner", version.ref = "codeScannerVersion" }
+code-scanner = { module = "com.github.yuriy-budiyev:code-scanner", version.ref = "codeScanner" }
 core = { module = "com.google.zxing:core", version.ref = "core" }
 journeyapps-zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbeddedVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

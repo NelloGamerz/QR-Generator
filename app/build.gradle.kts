@@ -46,4 +46,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation (libs.journeyapps.zxing.android.embedded) // For QR code generation
     implementation (libs.core) // ZXing core library
+    implementation (libs.journeyapps.zxing.android.embedded)
+    implementation (libs.code.scanner)
+//    implementation (libs.android.code.scanner)
 }
