@@ -11,15 +11,12 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.qrgenerator.databinding.ActivityMainBinding;
-//import com.example.qrgenerator.databinding.FragmentGenerateQrBinding;
 import com.example.qrgenerator.databinding.FragmentGeneratorBinding;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -39,6 +36,8 @@ public class Generator_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout using view binding
         binding = FragmentGeneratorBinding.inflate(inflater, container, false);
+
+//        binding = NewGeneratorLayoutBinding.inflate(inflater, container, false);
 
         // Generate QR Code on button click
         binding.generateButton.setOnClickListener(view -> {

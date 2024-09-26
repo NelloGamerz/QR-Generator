@@ -2,106 +2,137 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/linkInput"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="20dp"
-        android:allowUndo="true"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/enter_url"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColor="#000000"
-        android:textColorHint="#838383"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/QR_Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:allowUndo="true"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/qr_name"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColor="#000000"
-        android:textColorHint="#838383"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linkInput" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/QR_Name"
-        tools:layout_editor_absoluteX="0dp">
-
-        <Button
-            android:id="@+id/generateButton"
+        <!-- Title for the App -->
+        <TextView
+            android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/generate_qr_code" />
+            android:layout_marginTop="32dp"
+            android:text="QR Code Generator"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/resetButton"
+        <!-- EditText for entering the URL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/urlInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appTitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/linkInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cyan"
+                android:hint="Enter URL"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#838383" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- EditText for QR Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/qrNameInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/urlInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/QR_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cyan"
+                android:hint="QR Code Name"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#838383" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Linear Layout for Generate and Reset buttons -->
+        <LinearLayout
+            android:id="@+id/buttonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/reset" />
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qrNameInputLayout">
 
-    </LinearLayout>
+            <!-- Generate QR Code Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/generateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cyan"
+                android:text="Generate QR Code"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp" />
 
-    <ImageView
-        android:id="@+id/qrCodeImage"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginBottom="176dp"
-        android:contentDescription="@string/qr_code"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            <!-- Reset Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/resetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="@color/red"
+                android:text="Reset"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/DownloadQR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="160dp"
-        android:text="@string/download_qr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrCodeImage" />
+        <!-- ImageView for displaying QR code -->
+        <ImageView
+            android:id="@+id/qrCodeImage"
+            android:layout_width="382dp"
+            android:layout_height="387dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="QR Code"
+            android:scaleType="fitCenter"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonLayout" />
 
+        <!-- Download QR Code Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/DownloadQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/cyan"
+            android:text="Download QR Code"
+            android:textColor="@android:color/white"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qrCodeImage" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

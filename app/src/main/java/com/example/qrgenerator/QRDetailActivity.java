@@ -7,13 +7,17 @@ import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.button.MaterialButton;
 
 public class QRDetailActivity extends AppCompatActivity {
 
@@ -48,7 +52,7 @@ public class QRDetailActivity extends AppCompatActivity {
 //            startActivity(back);
 //        });
 
-        Button backButton = findViewById(R.id.btn_back);
+        ImageButton backButton = findViewById(R.id.btn_back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,5 +60,19 @@ public class QRDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        ImageButton btnShare = findViewById(R.id.btn_share);
+        btnShare.setOnClickListener(view -> {
+            String shareqrResult = ((TextView) findViewById(R.id.qr_result_text)).getText().toString().trim();
+            if (!shareqrResult.equals("No result")) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Scanned QR Code Result: " + qrResult);
+                startActivity(Intent.createChooser(shareIntent, "Share QR Code Result via"));
+            } else {
+                Toast.makeText(this, "No QR code result to share", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

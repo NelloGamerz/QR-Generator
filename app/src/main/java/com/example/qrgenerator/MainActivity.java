@@ -40,6 +40,8 @@ import java.io.OutputStream;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    private Generator_Fragment generatorFragment;
+    private Scanner_Fragment scannerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +50,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new Generator_Fragment()).commit();
 
-        binding.bottomNavigationView.setOnItemSelectedListener(view ->{
-            if(view.getItemId() == R.id.generator){
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new Generator_Fragment()).commit();
-                return true;
-            }else if(view.getItemId() == R.id.scanner){
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new Scanner_Fragment()).commit();
-                return true;
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            // Initialize fragments only once
+            if (generatorFragment == null) {
+                generatorFragment = new Generator_Fragment();
             }
-            return true;
+            if (scannerFragment == null) {
+                scannerFragment = new Scanner_Fragment();
+            }
+
+            // Use a switch statement for better readability
+            switch (item.getItemId()) {
+                case R.id.generator:
+                    // Check if already displayed
+                    if (!(getSupportFragmentManager().findFragmentById(R.id.frameLayout) instanceof Generator_Fragment)) {
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frameLayout, generatorFragment)
+                                .commitAllowingStateLoss(); // Prevent state loss
+                    }
+                    return true;
+
+                case R.id.scanner:
+                    // Check if already displayed
+                    if (!(getSupportFragmentManager().findFragmentById(R.id.frameLayout) instanceof Scanner_Fragment)) {
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frameLayout, scannerFragment)
+                                .commitAllowingStateLoss(); // Prevent state loss
+                    }
+                    return true;
+
+                default:
+                    return false; // Handle any other unexpected cases
+            }
         });
     }
 }

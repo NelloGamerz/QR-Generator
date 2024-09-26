@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- Shadow effect -->
+        <shape android:shape="oval">
+            <solid android:color="#66000000" /> <!-- Shadow color -->
+        </shape>
+    </item>
+
+    <item android:bottom="4dp" android:right="4dp"> <!-- Add some offset for the shadow -->
+        <shape android:shape="oval">
+            <solid android:color="@color/cyan" /> <!-- Main button color -->
+        </shape>
+    </item>
+</layer-list>
